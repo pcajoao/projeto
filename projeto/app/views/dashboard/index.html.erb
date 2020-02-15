@@ -1,0 +1,76 @@
+<%= render "shared/navbar" %>
+<h1>Dashboard</h1>
+
+<div class='container'>
+  <div class='categories-container'>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Desc</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td><div class='short-text'><%= category.desc %></div></td>
+
+              
+             <td><%= link_to 'Show', dashboard_index_path(category_id: category.id) %></td>
+              
+              <% if can? :create, Category %>
+              <td><%= link_to 'Edit', edit_category_path(category) %></td>
+              <% end %>
+
+              <% if can? :create, Category %>
+              <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+
+  
+  <div class='products-container'>
+    <% if params[:category_id].present? %> 
+        <% if can? :create, Product %>
+          <%= link_to 'New Product', new_category_product_path(params[:category_id]) %>
+        <% end %>
+    <% end %>
+    <div class='products'>
+      
+            <% @products.each do |product| %>
+
+            <div class='product'>
+
+                
+                <div class='short-text'><%= product.name %></div>
+                <div class='short-text'><%= product.desc %></div>
+
+                <div class="dashboard__products__control-buttons">
+                  <div><%= link_to 'Show', category_product_path(product.cat_id,product) %></div>
+                  <% if can? :create, Product %>
+                    <div><%= link_to 'Edit', edit_category_product_path(product.cat_id,product) %></div>
+                  <% end %>
+
+                  <% if can? :create, Product %>
+                  <div><%= link_to 'Destroy', category_product_path(product.cat_id, product), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+                  <% end %>
+                
+              </div>
+            </div>
+              
+            <% end %>
+      </div>
+  </div>
+
+</div>
+
+
+<%= link_to 'Categories', categories_path %>
+

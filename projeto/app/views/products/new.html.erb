@@ -1,0 +1,9 @@
+<center>
+<div class= "devise-container">
+<h1>New Product</h1>
+
+<%= render partial: 'form', locals: {product: @product, url: category_products_path, method: :post} %>
+
+<%= link_to 'Back', :back %>
+</div>
+</center>

@@ -1,0 +1,10 @@
+<center>
+<div class= "devise-container">
+<h1>Editing Product</h1>
+
+<%= render partial: 'form', locals: {product: @product, url: category_product_path(@product.cat_id, @product), method: :patch}%>
+
+<%= link_to 'Show', category_product_path(@product.cat_id,@product) %> |
+<%= link_to 'Back', category_products_path %>
+</div>
+</center>

@@ -1,0 +1,11 @@
+<center>
+<div class= "devise-container">
+<h1>Editing Comment</h1>
+
+<%= render partial: 'form', locals: {comment: @comment, url: product_comment_path(@comment.product_id, @comment), method: :patch}%>
+
+<%= link_to 'Show', product_comment_path(@comment.product_id, @comment) %> |
+<%= link_to 'Back', :back %>
+
+</div>
+</center>

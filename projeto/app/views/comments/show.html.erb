@@ -1,0 +1,12 @@
+<center>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Com:</strong>
+  <%= @comment.com %>
+
+ 
+
+<%= link_to 'Edit', edit_product_comment_path(@comment.product_id, @comment) %> |
+<%= link_to 'Back', dashboard_index_path %>
+</center>

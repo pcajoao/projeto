@@ -1,0 +1,50 @@
+<center>
+<p id="notice"><%= notice %></p>
+<div class= "devise-container",>
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @product.desc %>
+</p>
+
+
+
+<% if can? :create, Product %>
+<%= link_to 'Edit', edit_category_product_path(@product.cat_id, @product) %> |
+<% end %>
+
+<%= link_to 'Back', dashboard_index_path %> 
+<div>
+<h1>Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td> <div class='short-text'><%= comment.com %></div></td>
+        <td><%= link_to 'Show', product_comment_path(comment.product_id, comment) %></td>
+        <% if can? :edit, Comment %>
+        <td><%= link_to 'Edit', edit_product_comment_path(comment.product_id, comment) %></td>
+        <% end %>
+        <% if can? :destroy, Comment %>
+        <td><%= link_to 'Destroy', product_comment_path(comment.product_id, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<%= link_to 'New Comment', new_product_comment_path(product_id: params[:id], category_id: @product.cat_id)  %>
+</div>
+</center>

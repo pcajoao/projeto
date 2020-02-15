@@ -1,0 +1,22 @@
+<center>
+<div class= "devise-container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @category.desc %>
+</p>
+
+<% if can? :create, Category %>
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<% end %>
+
+<%= link_to 'Back', categories_path %>|
+<%= link_to 'Products', category_products_path(@category) %>
+</div>
+</center>

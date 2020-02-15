@@ -1,0 +1,9 @@
+<center>
+<div class= "devise-container">
+<h1>New Comment</h1>
+
+<%= render partial: 'form', locals: {comment: @comment, url: product_comments_path, method: :post} %>
+
+<%= link_to 'Back', :back %>
+</div>
+</center>
